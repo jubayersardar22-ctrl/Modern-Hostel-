@@ -269,12 +269,12 @@ export default function App() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
         
-        <div className="absolute inset-0 flex flex-col items-center justify-end pb-8 md:pb-16 text-center px-4 w-full">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 w-full">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-block bg-[#eab308] text-neutral-900 px-4 py-1 rounded-full text-xs md:text-sm font-bold mb-4"
+            className="inline-block bg-[#eab308] text-neutral-900 px-2.5 py-0.5 md:px-4 md:py-1 rounded-full text-[9px] md:text-sm font-semibold mb-2 md:mb-4"
           >
             💫 নতুন বছরের বিশেষ ছাড়!
           </motion.div>
@@ -282,7 +282,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6"
+            className="text-xl md:text-5xl lg:text-6xl font-semibold text-white tracking-tight mb-3 md:mb-6"
           >
             SMART HOSTEL
           </motion.h1>
@@ -291,12 +291,12 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-row items-center justify-center gap-3 md:gap-4"
+            className="flex flex-row items-center justify-center gap-2 md:gap-4"
           >
-            <a href="#packages" className="px-5 py-2.5 md:px-8 md:py-3 border-2 border-white text-white rounded-md text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-colors shadow-lg">
+            <a href="#packages" className="px-2.5 py-1 md:px-8 md:py-3 border-2 border-white text-white rounded-md text-[9px] md:text-sm font-semibold tracking-widest uppercase hover:bg-white hover:text-black transition-colors shadow-lg">
               BOOKING
             </a>
-            <a href="#packages" className="px-5 py-2.5 md:px-8 md:py-3 bg-[#DCE775] text-neutral-900 rounded-md text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-[#cddc39] transition-colors shadow-lg">
+            <a href="#packages" className="px-2.5 py-1 md:px-8 md:py-3 bg-[#DCE775] text-neutral-900 rounded-md text-[9px] md:text-sm font-semibold tracking-widest uppercase hover:bg-[#cddc39] transition-colors shadow-lg">
               PACKAGES
             </a>
           </motion.div>
@@ -305,7 +305,7 @@ export default function App() {
 
       {/* Welcome Section */}
       <section className="pt-16 pb-8 px-6 text-center w-full max-w-7xl mx-auto">
-        <h3 className="text-4xl md:text-7xl font-bold text-black dark:text-white mb-4 uppercase tracking-[0.2em]">
+        <h3 className="text-2xl md:text-7xl font-semibold text-black dark:text-white mb-4 uppercase tracking-[0.2em]">
           WELCOME
         </h3>
         <div className="w-full h-[2px] bg-black dark:bg-white mx-auto mb-8"></div>
