@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Moon, Sun, Menu, X, MapPin, Phone, CheckCircle2, Star, Shield, Wifi, Coffee, Home, Layers, Mail, Facebook, Twitter, Youtube, Instagram, Building2, Users, BookOpen, ShieldCheck, Car, Zap, Bell, PlayCircle, ExternalLink, Utensils, Droplets, Tv, Wind, Lock, Clock, HeartPulse, Flame, ChevronDown, MessageCircle } from 'lucide-react';
+import Chatbot from './components/Chatbot';
 
 // --- Placeholder Data for Bornali Super Home ---
 
@@ -595,7 +596,7 @@ export default function App() {
         </div>
 
         {/* FAQ Section */}
-        <div className="mb-8 md:mb-12 max-w-3xl mx-auto">
+        <div className="mb-8 md:mb-12 max-w-5xl mx-auto">
           <div className="text-center mb-6 md:mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-2 uppercase tracking-wider">
               সচরাচর জিজ্ঞাসা
@@ -603,39 +604,45 @@ export default function App() {
             <p className="text-neutral-600 dark:text-neutral-400 font-medium">আপনার প্রশ্ন, আমাদের উত্তর</p>
           </div>
 
-          <div className="space-y-4">
-            {[
-              {
-                q: "আপনাদের হোস্টেলে কি কি সুবিধা আছে?",
-                a: "আমাদের হোস্টেলে ৩ বেলা খাবার, ফ্রি ওয়াই-ফাই, ২৪/৭ সিসিটিভি নিরাপত্তা, বিশুদ্ধ খাবার পানি, জেনারেটর, এসি/নন-এসি রুম, লকার সুবিধা, কমন রুম এবং ২৪ ঘন্টা সার্ভিস রয়েছে।"
-              },
-              {
-                q: "খাবার ব্যবস্থা কেমন?",
-                a: "আমরা স্বাস্থ্যসম্মত ও পুষ্টিকর ৩ বেলা খাবার পরিবেশন করি। সকালের নাস্তা, দুপুরের খাবার এবং রাতের খাবার আমাদের প্যাকেজের অন্তর্ভুক্ত।"
-              },
-              {
-                q: "হোস্টেলের নিরাপত্তা ব্যবস্থা কেমন?",
-                a: "আমাদের হোস্টেলে ২৪/৭ সিসিটিভি ক্যামেরা এবং সার্বক্ষণিক সিকিউরিটি গার্ড রয়েছে, যা আপনার সর্বোচ্চ নিরাপত্তা নিশ্চিত করে।"
-              },
-              {
-                q: "বুকিং করার নিয়ম কি?",
-                a: "আপনি সরাসরি আমাদের অফিসে এসে অথবা আমাদের ফোন নম্বরে যোগাযোগ করে সিট বুকিং করতে পারবেন। বুকিংয়ের জন্য নির্দিষ্ট পরিমাণ অগ্রিম প্রদান করতে হয়।"
-              },
-              {
-                q: "গেস্ট আসার কোনো নিয়ম আছে কি?",
-                a: "হ্যাঁ, গেস্ট আসার নিয়ম রয়েছে। তবে গেস্টদের জন্য নির্দিষ্ট সময় এবং নিয়মাবলী মেনে চলতে হয়, যা হোস্টেল কর্তৃপক্ষ দ্বারা নির্ধারিত।"
-              }
-            ].map((faq, index) => (
-              <details key={index} className="group bg-white dark:bg-[#111] border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex items-center justify-between p-5 md:p-6 cursor-pointer font-medium text-neutral-900 dark:text-white hover:text-[#CA8A04] dark:hover:text-yellow-400 transition-colors">
-                  <span className="text-base md:text-lg pr-4">{faq.q}</span>
-                  <ChevronDown className="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-300 shrink-0" />
-                </summary>
-                <div className="p-5 md:p-6 pt-0 text-neutral-600 dark:text-neutral-400 text-sm md:text-base leading-relaxed border-t border-neutral-100 dark:border-neutral-800/50 mt-2">
-                  {faq.a}
-                </div>
-              </details>
-            ))}
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              {[
+                {
+                  q: "আপনাদের হোস্টেলে কি কি সুবিধা আছে?",
+                  a: "আমাদের হোস্টেলে ৩ বেলা খাবার, ফ্রি ওয়াই-ফাই, ২৪/৭ সিসিটিভি নিরাপত্তা, বিশুদ্ধ খাবার পানি, জেনারেটর, এসি/নন-এসি রুম, লকার সুবিধা, কমন রুম এবং ২৪ ঘন্টা সার্ভিস রয়েছে।"
+                },
+                {
+                  q: "খাবার ব্যবস্থা কেমন?",
+                  a: "আমরা স্বাস্থ্যসম্মত ও পুষ্টিকর ৩ বেলা খাবার পরিবেশন করি। সকালের নাস্তা, দুপুরের খাবার এবং রাতের খাবার আমাদের প্যাকেজের অন্তর্ভুক্ত।"
+                },
+                {
+                  q: "হোস্টেলের নিরাপত্তা ব্যবস্থা কেমন?",
+                  a: "আমাদের হোস্টেলে ২৪/৭ সিসিটিভি ক্যামেরা এবং সার্বক্ষণিক সিকিউরিটি গার্ড রয়েছে, যা আপনার সর্বোচ্চ নিরাপত্তা নিশ্চিত করে।"
+                },
+                {
+                  q: "বুকিং করার নিয়ম কি?",
+                  a: "আপনি সরাসরি আমাদের অফিসে এসে অথবা আমাদের ফোন নম্বরে যোগাযোগ করে সিট বুকিং করতে পারবেন। বুকিংয়ের জন্য নির্দিষ্ট পরিমাণ অগ্রিম প্রদান করতে হয়।"
+                },
+                {
+                  q: "গেস্ট আসার কোনো নিয়ম আছে কি?",
+                  a: "হ্যাঁ, গেস্ট আসার নিয়ম রয়েছে। তবে গেস্টদের জন্য নির্দিষ্ট সময় এবং নিয়মাবলী মেনে চলতে হয়, যা হোস্টেল কর্তৃপক্ষ দ্বারা নির্ধারিত।"
+                }
+              ].map((faq, index) => (
+                <details key={index} className="group bg-white dark:bg-[#111] border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex items-center justify-between p-5 md:p-6 cursor-pointer font-medium text-neutral-900 dark:text-white hover:text-[#CA8A04] dark:hover:text-yellow-400 transition-colors">
+                    <span className="text-base md:text-lg pr-4">{faq.q}</span>
+                    <ChevronDown className="w-5 h-5 text-neutral-500 group-open:rotate-180 transition-transform duration-300 shrink-0" />
+                  </summary>
+                  <div className="p-5 md:p-6 pt-0 text-neutral-600 dark:text-neutral-400 text-sm md:text-base leading-relaxed border-t border-neutral-100 dark:border-neutral-800/50 mt-2">
+                    {faq.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+            
+            <div className="h-full">
+              <Chatbot />
+            </div>
           </div>
         </div>
 
