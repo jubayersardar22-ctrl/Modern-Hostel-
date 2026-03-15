@@ -230,7 +230,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section id="home" ref={heroRef} className="relative flex items-center justify-center overflow-hidden w-full h-[250px] md:h-[350px] mt-16 md:mt-20">
+      <section id="home" ref={heroRef} className="relative flex items-center justify-center overflow-hidden w-full h-[250px] md:h-[350px] lg:h-[calc(100vh-260px)] mt-16 md:mt-20">
         <img 
           src="https://lh3.googleusercontent.com/d/1_ieYrd0sx_hhv_D8nBiCFDrwBpFIcRF5" 
           alt="Bornali Super Home" 
@@ -274,11 +274,10 @@ export default function App() {
       </section>
 
       {/* Welcome Section */}
-      <section className="pt-8 pb-4 md:pt-16 md:pb-8 px-4 text-center w-full max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white uppercase tracking-[0.2em] mb-4 md:mb-6">
+      <section className="pt-8 pb-4 md:pt-16 md:pb-8 lg:h-[180px] px-4 text-center w-full max-w-7xl mx-auto flex flex-col items-center justify-center">
+        <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white uppercase tracking-[0.2em] mb-4 md:mb-6 underline decoration-[#eab308] decoration-4 md:decoration-8 underline-offset-[12px] md:underline-offset-[20px]">
           WELCOME
         </h2>
-        <div className="w-full h-[2px] bg-neutral-300 dark:bg-neutral-700"></div>
       </section>
 
       {/* Intro & Main Content Section */}

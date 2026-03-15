@@ -4,7 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
 
 // Initialize Gemini API
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+const ai = new GoogleGenAI({ apiKey: apiKey as string });
 
 interface Message {
   id: string;
@@ -53,6 +54,10 @@ export default function Chatbot() {
     setIsLoading(true);
 
     try {
+      if (!apiKey) {
+        throw new Error("API Key পাওয়া যায়নি। দয়া করে Netlify-তে VITE_GEMINI_API_KEY যুক্ত করুন।");
+      }
+
       const systemInstruction = `You are a helpful, polite, and professional virtual assistant for "Bornali Super Home" (বর্ণালী সুপার হোম), a premium bachelor hostel in Dhaka. 
       Answer questions in Bengali or English based on the user's language. 
       Keep answers concise, friendly, and highly relevant to the provided hostel information. Do not make up any information. If you don't know the answer, politely ask the user to contact the hostel directly.
@@ -107,14 +112,27 @@ export default function Chatbot() {
           text: response.text || 'দুঃখিত, আমি এই মুহূর্তে উত্তর দিতে পারছি না।',
         },
       ]);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Gemini API Error:', error);
+      
+      let errorMessage = 'দুঃখিত, একটি সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।';
+      
+      if (error?.message?.includes('429') || error?.message?.includes('Quota') || error?.message?.includes('RESOURCE_EXHAUSTED')) {
+        errorMessage = 'দুঃখিত, API Key এর ফ্রি লিমিট (Quota) শেষ হয়ে গেছে। দয়া করে নতুন একটি API Key ব্যবহার করুন।';
+      } else if (error?.message?.includes('API Key পাওয়া যায়নি')) {
+        errorMessage = error.message;
+      } else if (error?.message?.includes('API key not valid') || error?.message?.includes('API_KEY_INVALID')) {
+        errorMessage = 'আপনার দেওয়া API Key টি সঠিক নয়। দয়া করে সঠিক Key দিন।';
+      } else if (error?.message) {
+        errorMessage = `সমস্যা হয়েছে: ${error.message}`;
+      }
+
       setMessages((prev) => [
         ...prev,
         {
           id: Date.now().toString(),
           role: 'model',
-          text: 'দুঃখিত, একটি সমস্যা হয়েছে। দয়া করে আবার চেষ্টা করুন।',
+          text: errorMessage,
         },
       ]);
     } finally {
